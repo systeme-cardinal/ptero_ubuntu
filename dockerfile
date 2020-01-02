@@ -16,7 +16,7 @@ RUN         dpkg --add-architecture i386 \
             && apt-get install -y libcurl3-gnutls:i386 iproute2 gdb libsdl1.2debian libfontconfig telnet net-tools netcat \
             && apt-get install -y build-essential cmake zip unzip software-properties-common fontconfig openjdk-8-jdk \
             && curl -sL https://deb.nodesource.com/setup_13.x | bash - \
-            && apt-get install -y nodejs git mono-runtime make neofetch\  
+            && apt-get install -y nodejs git mono-runtime make neofetch \  
             && useradd -m -d /home/container container \
             && usermod -aG sudo container
 
