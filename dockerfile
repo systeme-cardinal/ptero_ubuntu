@@ -21,12 +21,18 @@ RUN         dpkg --add-architecture i386 \
             && apt-get install -y build-essential cmake zip unzip software-properties-common fontconfig openjdk-8-jdk \
             && curl -sL https://deb.nodesource.com/setup_13.x | bash - \
             && apt-get install -y nodejs git mono-runtime make neofetch \  
-            && useradd -m -d /home/container container \
-            && usermod -aG sudo container
+            && adduser --home /home/container --disabled-password --gecos "" container \
+            && echo "container:container" | chpasswd \
+            && usermod -a -G sudo container
 
-USER        container
-ENV         HOME /home/container
-WORKDIR     /home/container
 
-COPY        ./entrypoint.sh /entrypoint.sh
+
+USER container
+ENV  USER container
+ENV  HOME /home/container/
+WORKDIR /home/container/
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 CMD         ["/bin/bash", "/entrypoint.sh"]
