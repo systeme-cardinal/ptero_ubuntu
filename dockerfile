@@ -13,6 +13,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN         dpkg --add-architecture i386 \
+            && add-apt-repository ppa:linuxuprising/java \
+            && apt-get update -y \
+            && apt-get install oracle-java13-installer \
             && apt-get update -y \
             && apt-get upgrade -y \
             && apt-get install -y sudo tar wget curl gcc g++ lib32gcc1 libgcc1 libcurl4-gnutls-dev:i386 libssl1.0.0:i386 \
