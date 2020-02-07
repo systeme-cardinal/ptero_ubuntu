@@ -24,7 +24,7 @@ RUN         dpkg --add-architecture i386 \
             && apt-get install -y sudo tar wget curl gcc g++ lib32gcc1 libgcc1 libcurl4-gnutls-dev:i386 libssl1.0.0:i386 \
             && apt-get install -y libcurl4:i386 lib32tinfo5 libtinfo5:i386 lib32z1 lib32stdc++6 libncurses5:i386 \
             && apt-get install -y libcurl3-gnutls:i386 iproute2 gdb libsdl1.2debian libfontconfig telnet net-tools netcat \
-            && apt-get install -y build-essential cmake zip unzip software-properties-common fontconfig openjdk-8-jdk \
+            && apt-get install -y build-essential cmake zip unzip software-properties-common fontconfig \
             && curl -sL https://deb.nodesource.com/setup_13.x | bash - \
             && apt-get install -y nodejs git mono-runtime make neofetch \  
             && adduser --home /home/container --disabled-password --gecos "" container \
