@@ -13,6 +13,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN         dpkg --add-architecture i386 \
+            && apt-get update -y \
             && apt-get install software-properties-common -y \
             && apt-get update -y \
             && add-apt-repository ppa:linuxuprising/java -y \
